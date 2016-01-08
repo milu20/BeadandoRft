@@ -51,7 +51,7 @@ public class YahooWeatherService {
                     StringBuilder result = new StringBuilder();
                     String line;
 
-                    while ((line == reader.readLine()) != null) {
+                    while ((line = reader.readLine()) != null) {
                         result.append(line);
                     }
                     return result.toString();
