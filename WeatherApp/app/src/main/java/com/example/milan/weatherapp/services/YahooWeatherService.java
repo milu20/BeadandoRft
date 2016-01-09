@@ -22,7 +22,7 @@ import java.net.URLConnection;
  */
 public class YahooWeatherService {
     private WeatherServiceCallback callback;
-    private  String location;
+    private String location;
     private Exception error;
 
     public YahooWeatherService(WeatherServiceCallback callback) {
@@ -33,12 +33,13 @@ public class YahooWeatherService {
         return location;
     }
 
-    public void refreshWeather(final String location){
+    public void refreshWeather(String l){
+        this.location = l;
         new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... strings) {
 
-                String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\")", location);
+                String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\") and u = 'c", strings[0]);
 
                 String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=&format=json", Uri.encode(YQL));
 
@@ -77,7 +78,7 @@ public class YahooWeatherService {
 
                     int count = queryResults.optInt("count");
                     if(count == 0){
-                        callback.serviceFailure(new LocationWeatherException("Nincs időjárási információ az ön helyéről:"+location));
+                        callback.serviceFailure(new LocationWeatherException("Nincs időjárási információ az ön helyéről:" + location));
                         return;
                     }
 
@@ -89,7 +90,7 @@ public class YahooWeatherService {
                     callback.serviceFailure(e);
                 }
             }
-        }.execute(location);
+        }.execute(l);
 
     }
     public class LocationWeatherException extends Exception{
