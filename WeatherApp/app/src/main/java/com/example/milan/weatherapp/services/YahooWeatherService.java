@@ -1,6 +1,6 @@
 package com.example.milan.weatherapp.services;
 
-import android.graphics.AvoidXfermode;
+
 import android.net.Uri;
 import android.os.AsyncTask;
 
@@ -10,10 +10,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -39,13 +37,15 @@ public class YahooWeatherService {
             @Override
             protected String doInBackground(String... strings) {
 
-                String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\") and u = 'c", strings[0]);
+                String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\") and u='c'", strings[0]);
 
-                String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=&format=json", Uri.encode(YQL));
+                String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=%s&format=json", Uri.encode(YQL));
 
                 try {
                     URL url = new URL(endpoint);
+
                     URLConnection connection = url.openConnection();
+
                     InputStream inputStream = connection.getInputStream();
 
                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -85,17 +85,17 @@ public class YahooWeatherService {
                     Channel channel = new Channel();
                     channel.populate(queryResults.optJSONObject("results").optJSONObject("channel"));
 
-                    callback.serviceSucces(channel);
+                    callback.serviceSuccess(channel);
                 } catch (JSONException e) {
                     callback.serviceFailure(e);
                 }
             }
-        }.execute(l);
+        }.execute(location);
 
     }
     public class LocationWeatherException extends Exception{
-        public  LocationWeatherException(String detialMessage){
-            super(detialMessage);
+        public  LocationWeatherException(String detailMessage){
+            super(detailMessage);
         }
     }
 }

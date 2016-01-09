@@ -5,7 +5,7 @@ import org.json.JSONObject;
 /**
  * Created by Milan on 2016.01.09..
  */
-public class Wind implements JSONPopulator {
+/*public class Wind implements JSONPopulator {
     private int speed;
 
     public int getSpeed() {
@@ -16,4 +16,4 @@ public class Wind implements JSONPopulator {
     public void populate(JSONObject data) {
         speed=data.optInt("speed");
     }
-}
+}*/

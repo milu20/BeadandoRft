@@ -8,11 +8,11 @@ import org.json.JSONObject;
 public class Channel implements JSONPopulator {
     private Item item;
     private Units units;
-    private Wind wind;
+    /*private Wind wind;
 
     public Wind getWind(){
         return wind;
-    }
+    }*/
 
     public Item getItem() {
         return item;
@@ -25,8 +25,9 @@ public class Channel implements JSONPopulator {
     @Override
     public void populate(JSONObject data) {
 
-        wind = new Wind();
-        wind.populate(data.optJSONObject("speed"));
+        /*wind = new Wind();
+
+        wind.populate(data.optJSONObject("speed"));*/
 
         units = new Units();
         units.populate(data.optJSONObject("units"));

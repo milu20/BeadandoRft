@@ -6,6 +6,6 @@ import com.example.milan.weatherapp.data.Channel;
  * Created by Milan on 2016.01.06..
  */
 public interface WeatherServiceCallback {
-    void serviceSucces(Channel channel);
+    void serviceSuccess(Channel channel);
     void serviceFailure(Exception exception);
 }

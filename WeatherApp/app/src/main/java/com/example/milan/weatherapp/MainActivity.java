@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.milan.weatherapp.data.Channel;
 import com.example.milan.weatherapp.data.Item;
-import com.example.milan.weatherapp.data.Wind;
+//import com.example.milan.weatherapp.data.Wind;
 import com.example.milan.weatherapp.services.WeatherServiceCallback;
 import com.example.milan.weatherapp.services.YahooWeatherService;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements WeatherServiceCal
     private TextView temperatureTextView;
     private TextView conditionTextView;
     private TextView locationTextView;
-    private TextView speedTextView;
+    //private TextView speedTextView;
 
     private YahooWeatherService service;
     private ProgressDialog dialog;
@@ -35,31 +35,31 @@ public class MainActivity extends AppCompatActivity implements WeatherServiceCal
         temperatureTextView = (TextView)findViewById(R.id.temperatureTextView);
         conditionTextView = (TextView)findViewById(R.id.conditionTextView);
         locationTextView = (TextView)findViewById(R.id.locationTextView);
-        speedTextView = (TextView)findViewById(R.id.speedTextView);
+        //speedTextView = (TextView)findViewById(R.id.speedTextView);
 
         service = new YahooWeatherService(this);
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading...");
         dialog.show();
-        service.refreshWeather("Budapest, HU");
+        service.refreshWeather("Budapest, Hu");
 
     }
 
     @Override
-    public void serviceSucces(Channel channel) {
+    public void serviceSuccess(Channel channel) {
         dialog.hide();
 
-        Wind wind = channel.getWind();
+        //Wind wind = channel.getWind();
 
         Item item = channel.getItem();
         int resourceId = getResources().getIdentifier("drawable/icon_" + item.getCondition().getCode(), null, getPackageName());
 
         @SuppressWarnings("deprecation")
-        Drawable weatherIconDrawble = getResources().getDrawable(resourceId);
+        Drawable weatherIconDrawable = getResources().getDrawable(resourceId);
 
-        weatherIconImageView.setImageDrawable(weatherIconDrawble);
+        weatherIconImageView.setImageDrawable(weatherIconDrawable);
 
-        speedTextView.setText(wind.getSpeed() + channel.getWind().getSpeed());
+       //speedTextView.setText(channel.getWind().getSpeed() + channel.getUnits().getSpeed());
 
         temperatureTextView.setText(item.getCondition().getTemperature() + "\u00B0 " + channel.getUnits().getTemperature());
 
