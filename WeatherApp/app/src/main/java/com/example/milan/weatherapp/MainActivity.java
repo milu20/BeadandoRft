@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements WeatherServiceCal
 
 
     @Override
+    /***
+     * sikeres csatlakozás esetén a lekért adatokat kiíratja
+     */
     public void serviceSuccess(Channel channel) {
         dialog.hide();
 
@@ -75,12 +78,18 @@ public class MainActivity extends AppCompatActivity implements WeatherServiceCal
     }
 
     @Override
+    /***
+     * sikertelen csatlakozás esetén hiba kiíratása
+     */
     public void serviceFailure(Exception exception) {
         dialog.hide();
         Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
     }
 
     @Override
+    /***
+     * Ennek köszönhető a dinamikus keresés
+     */
     public void onClick(View v) {
         switch(v.getId())
         {
