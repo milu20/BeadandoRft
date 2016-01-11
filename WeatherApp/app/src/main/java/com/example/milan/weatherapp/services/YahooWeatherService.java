@@ -3,6 +3,7 @@ package com.example.milan.weatherapp.services;
 
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.milan.weatherapp.data.Channel;
 
@@ -40,7 +41,7 @@ public class YahooWeatherService {
                 String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\") and u='c'", strings[0]);
 
                 String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=%s&format=json", Uri.encode(YQL));
-
+                Log.d("lol",endpoint);
                 try {
                     URL url = new URL(endpoint);
 

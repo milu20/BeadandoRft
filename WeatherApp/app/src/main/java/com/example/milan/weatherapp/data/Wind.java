@@ -5,15 +5,15 @@ import org.json.JSONObject;
 /**
  * Created by Milan on 2016.01.09..
  */
-/*public class Wind implements JSONPopulator {
-    private int speed;
+public class Wind implements JSONPopulator {
+    private double speed;
 
-    public int getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
     @Override
     public void populate(JSONObject data) {
-        speed=data.optInt("speed");
+        speed=data.optDouble("speed");
     }
-}*/
+}
