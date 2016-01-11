@@ -66,12 +66,19 @@ public class YahooWeatherService {
             @Override
             protected void onPostExecute(String s) {
 
+                /***
+                 * ha s nulla hibát dob
+                 */
                 if(s == null && error != null){
                     callback.serviceFailure(error);
                     return;
 
                 }
 
+
+                /***
+                 * sql lekérdezés eredmény, ha nem kap adatot, üres adatokat kap nincs időjárási információ
+                 */
                 try {
                     JSONObject data = new JSONObject(s);
 

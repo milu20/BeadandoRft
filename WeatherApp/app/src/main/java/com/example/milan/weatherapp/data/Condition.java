@@ -5,6 +5,10 @@ import org.json.JSONObject;
 /**
  * Created by Milan on 2016.01.06..
  */
+
+/***
+ * adatok lekérése
+ */
 public class Condition implements JSONPopulator {
     private int code;
     private int temperature;
