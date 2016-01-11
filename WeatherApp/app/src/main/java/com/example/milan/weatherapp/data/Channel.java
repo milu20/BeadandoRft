@@ -5,10 +5,6 @@ import org.json.JSONObject;
 /**
  * Created by Milan on 2016.01.06..
  */
-
-/***
- * adatok lekérése
- */
 public class Channel implements JSONPopulator {
     private Item item;
     private Units units;

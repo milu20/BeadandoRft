@@ -5,10 +5,6 @@ import org.json.JSONObject;
 /**
  * Created by Milan on 2016.01.09..
  */
-
-/***
- * adatok lekérése
- */
 public class Wind implements JSONPopulator {
     private double speed;
 
